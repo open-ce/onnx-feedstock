@@ -40,8 +40,6 @@ requirements:
     - six {{ six }}
 
 test:
-  requires:
-    - typing {{ typing }}
   imports:
     - onnx
   commands:
