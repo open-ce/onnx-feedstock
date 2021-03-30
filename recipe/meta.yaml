@@ -14,7 +14,7 @@ source:
     - 0101-python_out-does-not-recognize-dllexport_decl.patch
 
 build:
-  number: 3
+  number: 6
   string: py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   entry_points:
     - check-model = onnx.bin.checker:check_model
@@ -48,8 +48,6 @@ test:
     - check-model --help
     - check-node --help
     - backend-test-tools --help
-    - conda inspect linkages -p $PREFIX {{ name }}  # [unix]
-    - conda inspect objects -p $PREFIX {{ name }}   # [osx]
 
 about:
   home: https://github.com/onnx/onnx/
