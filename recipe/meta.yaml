@@ -29,6 +29,7 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake {{ cmake }}
     - make                # needed by cmake
+    - libprotobuf {{ protobuf }}
   host:
     - python {{ python }}
     - pip
