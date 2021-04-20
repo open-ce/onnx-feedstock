@@ -16,7 +16,7 @@ source:
 {% endif %}
 
 build:
-  number: 6
+  number: 7
   string: py{{ python | replace(".", "") }}_{{ PKG_BUILDNUM }}
   entry_points:
     - check-model = onnx.bin.checker:check_model
