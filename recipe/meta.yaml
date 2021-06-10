@@ -39,6 +39,10 @@ requirements:
     - libprotobuf {{ protobuf }}
     - pytest-runner {{ pytest }}
     - ninja {{ ninja }}
+    # Use pins to control cos6/cos7 match
+    - libgcc-ng  {{ libgcc }}
+    - libstdcxx-ng  {{ libstdcxx }}
+
   run:
     - python {{ python }}
     - protobuf {{ protobuf }}
