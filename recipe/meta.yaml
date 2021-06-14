@@ -22,6 +22,9 @@ build:
     - check-model = onnx.bin.checker:check_model
     - check-node = onnx.bin.checker:check_node
     - backend-test-tools = onnx.backend.test.cmd_tools:main
+  ignore_run_exports:
+    - libgcc-ng
+    - libstdcxx-ng
 
 requirements:
   build:
@@ -49,12 +52,11 @@ requirements:
     - libprotobuf {{ protobuf }}
     - numpy {{ numpy }}
     - six {{ six }}
-
-test:
-  requires:
     # Use pins to control cos6/cos7 match
     - libgcc-ng  {{ libgcc }}
     - libstdcxx-ng  {{ libstdcxx }}
+
+test:
   imports:
     - onnx
   commands:
