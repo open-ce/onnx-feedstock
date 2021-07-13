@@ -2,6 +2,7 @@
 {% set version = "1.6.0" %}
 # git tag can be any value that works with git checkout
 {% set git_tag = "fea8568cac61a482ed208748fdc0e1a8e4" %}
+{% set pb_ver = protobuf | string %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +11,9 @@ package:
 source:
   git_url: "https://github.com/onnx/onnx.git"
   git_tag: {{ git_tag }}
+  # This patch is needed when building with protobuf newer than 3.9
+{% if pb_ver.split('.')[0] | int == 3 and pb_ver.split('.')[1] | int > 9 %}
   patches:
-{% if protobuf=="3.14.*" %}
     - 0101-python_out-does-not-recognize-dllexport_decl.patch
 {% endif %}
 
