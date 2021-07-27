@@ -44,7 +44,7 @@ requirements:
     - libprotobuf {{ protobuf }}
     - numpy {{ numpy }}
     - six {{ six }}
-    - typing-extensions {{ typing_extensions }}
+    - typing-extensions {{ typing_extensions }}   # [py<38]
 
 test:
   imports:
