@@ -17,6 +17,17 @@
 export ONNX_ML=1
 export CONDA_PREFIX="$PREFIX"  # build script looks at this, but not set on
 
+if [[ $ppc_arch == "p10" ]]
+then
+    AR=/opt/rh/gcc-toolset-10/root/usr/bin/ar
+    LD=/opt/rh/gcc-toolset-10/root/usr/bin/ld
+    NM=/opt/rh/gcc-toolset-10/root/usr/bin/nm
+    OBJCOPY=/opt/rh/gcc-toolset-10/root/usr/bin/objcopy
+    OBJDUMP=/opt/rh/gcc-toolset-10/root/usr/bin/objdump
+    RANLIB=/opt/rh/gcc-toolset-10/root/usr/bin/ranlib
+    STRIP=/opt/rh/gcc-toolset-10/root/usr/bin/strip
+fi
+
 # Let's be explicit with CMake.
 export CMAKE_ARGS="${CMAKE_ARGS} -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc -DProtobuf_LIBRARY=$PREFIX/lib/libprotobuf${SHLIB_EXT}"
 export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_AR=${AR}"
