@@ -19,13 +19,19 @@ export CONDA_PREFIX="$PREFIX"  # build script looks at this, but not set on
 
 if [[ $ppc_arch == "p10" ]]
 then
-    AR=/opt/rh/gcc-toolset-10/root/usr/bin/ar
-    LD=/opt/rh/gcc-toolset-10/root/usr/bin/ld
-    NM=/opt/rh/gcc-toolset-10/root/usr/bin/nm
-    OBJCOPY=/opt/rh/gcc-toolset-10/root/usr/bin/objcopy
-    OBJDUMP=/opt/rh/gcc-toolset-10/root/usr/bin/objdump
-    RANLIB=/opt/rh/gcc-toolset-10/root/usr/bin/ranlib
-    STRIP=/opt/rh/gcc-toolset-10/root/usr/bin/strip
+    if [[ -z "${GCC_10_HOME}" ]];
+    then
+        echo "Please set GCC_10_HOME to the install path of gcc-toolset-10"
+        exit 1
+    else
+        AR=${GCC_10_HOME}/bin/ar
+        LD=${GCC_10_HOME}/bin/ld
+        NM=${GCC_10_HOME}/bin/nm
+        OBJCOPY=${GCC_10_HOME}/bin/objcopy
+        OBJDUMP=${GCC_10_HOME}/bin/objdump
+        RANLIB=${GCC_10_HOME}/bin/ranlib
+        STRIP=${GCC_10_HOME}/bin/strip
+    fi
 fi
 
 # Let's be explicit with CMake.
