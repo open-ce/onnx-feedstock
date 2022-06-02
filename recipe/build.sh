@@ -17,23 +17,6 @@
 export ONNX_ML=1
 export CONDA_PREFIX="$PREFIX"  # build script looks at this, but not set on
 
-if [[ $ppc_arch == "p10" ]]
-then
-    if [[ -z "${GCC_11_HOME}" ]];
-    then
-        echo "Please set GCC_11_HOME to the install path of gcc-toolset-11"
-        exit 1
-    else
-        AR=${GCC_11_HOME}/bin/ar
-        LD=${GCC_11_HOME}/bin/ld
-        NM=${GCC_11_HOME}/bin/nm
-        OBJCOPY=${GCC_11_HOME}/bin/objcopy
-        OBJDUMP=${GCC_11_HOME}/bin/objdump
-        RANLIB=${GCC_11_HOME}/bin/ranlib
-        STRIP=${GCC_11_HOME}/bin/strip
-    fi
-fi
-
 # Let's be explicit with CMake.
 export CMAKE_ARGS="${CMAKE_ARGS} -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc -DProtobuf_LIBRARY=$PREFIX/lib/libprotobuf${SHLIB_EXT}"
 export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_AR=${AR}"
