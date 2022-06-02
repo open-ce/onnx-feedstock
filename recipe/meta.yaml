@@ -10,19 +10,17 @@ source:
   git_rev: v{{ version }}
 
 build:
-  number: 2
+  number: 3
   string: h{{ PKG_HASH }}_py{{ python | replace(".", "") }}_pb{{ protobuf | replace(".*", "")}}_{{ PKG_BUILDNUM }}
   entry_points:
     - check-model = onnx.bin.checker:check_model
     - check-node = onnx.bin.checker:check_node
     - backend-test-tools = onnx.backend.test.cmd_tools:main
-  script_env:                 # [ppc_arch == "p10"]
-    - GCC_11_HOME             # [ppc_arch == "p10"]
 
 requirements:
   build:
-    - {{ compiler('c') }}     # [ppc_arch != "p10"]
-    - {{ compiler('cxx') }}   # [ppc_arch != "p10"]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake {{ cmake }}
     - make                # needed by cmake
     - libprotobuf {{ protobuf }}
