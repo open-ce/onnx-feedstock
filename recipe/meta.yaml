@@ -19,7 +19,7 @@ build:
     - check-node = onnx.bin.checker:check_node
     - backend-test-tools = onnx.backend.test.cmd_tools:main
   script_env:                 # [ppc_arch == "p10"]
-    - GCC_11_HOME             # [ppc_arch == "p10"]
+    - GCC_HOME             # [ppc_arch == "p10"]
 
 requirements:
   build:
