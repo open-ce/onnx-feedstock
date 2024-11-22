@@ -8,6 +8,8 @@ package:
 source:
   git_url: "https://github.com/onnx/onnx.git"
   git_rev: v{{ version }}
+  patches:
+    - 0001-Fix-CVE-2024-5187.patch
 
 build:
   number: 2
